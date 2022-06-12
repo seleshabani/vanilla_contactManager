@@ -11,6 +11,8 @@ nav{
     box-shadow: 2px 2px 2px black;
     color: white;
     padding: 10px;
+    position: sticky;
+    top: 0px;
 }
 nav h1{
     font-size: 20px;
@@ -93,13 +95,18 @@ nav h1{
 .content .content-form form .form__actions{
     display: flex;
     flex-direction: row;
+    height: 200px;
+    justify-content: space-between;
 }
 .content .content-form form .form__actions .form-img{
     width: 50%;
+    height: 60%;
     border: solid blue;
+    background-position: center;
+    background-size: cover;
 }
 .content .content-form form .form__actions .buttons{
-    width: 50%;
+    width: 45%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -114,6 +121,7 @@ nav h1{
 .content .content-list{
     width: 52%;
     height: 90vh;
+    overflow: scroll;
     border: solid grey 1px;
     background-color: rgb(211, 211, 211);
 }
@@ -137,10 +145,14 @@ nav h1{
     width: 100%;
     border-bottom: solid 1px rgb(50, 144, 233);
     padding-bottom: 5px ;
+    display: flex;
+    float: row;
+    justify-content: space-between;
+    align-items: center;
 }
 .content .content-list__items .content-list__items__item .img{
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     cursor: pointer;
 }
 .content .content-list__items .content-list__items__item .img img{
@@ -148,7 +160,18 @@ nav h1{
     height: 100%;
     border-radius: 50%;
 }
-
+.content .content-list__items .content-list__items__item .text{
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    word-wrap: break-word;
+}
+.content .content-list__items .content-list__items__item .action{
+    width: 10px;
+    cursor: pointer;
+    color: red;
+}
 .progress{
     width: 100%;
     height: 20px;
