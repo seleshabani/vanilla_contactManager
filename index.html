@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
@@ -25,33 +26,42 @@
                     <label for="">Nom</label>
                     <input type="text" name="nom" id="">
                 </div>
+                <div class="input">
+                    <label for="">Téléphone</label>
+                    <input type="text" name="tel" id="">
+                </div>
                 <div class="input_select">
                     <label for="">Groupe</label>
                     <select name="groupe" id="">
-                        <option value="famille">lorem</option>
-                        <option value="amis">lorem</option>
+                        <option value="famille">Famille</option>
+                        <option value="amis">Amis</option>
                     </select>
+                </div>
+                <div class="input">
+                    <label for="">Mail</label>
+                    <input type="text" name="mail" id="">
                 </div>
                 <div class="input_text">
                     <label for="">Bio</label>
-                    <textarea name="bio" id="" cols="30" rows="10"></textarea>
+                    <textarea name="bio" id=""></textarea>
                 </div>
-                <div class="input_file">
-                    <input type="file" name="profil_photo" id="profile">
-                </div>
-                <div class="form__actions">
-                    <div class="buttons">
-                        <button type="submit">Enregistrer</button>
-                        <button id="reset_btn" type="reset">Reinitialiser</button>
+                <input type="hidden" name="index" value="-1">
+                <label for="profile" class="dropzone" dropzone>
+                    <div class="input_file">
+                        <input type="file" name="profil_photo" id="profile">
                     </div>
                     <div class="form-img">
 
                     </div>
+                    <p id="drop_zone_text">Déposez la photo ici</p>
+                </label>
+                <div class="form__actions">
+                    <div class="buttons">
+                        <button type="submit" id="save_btn">Enregistrer</button>
+                        <button draggable="true" id="reset_btn" type="reset">Reinitialiser</button>
+                    </div>
                 </div>
             </form>
-            <div class="progress">
-                <div class="fuller"></div>
-            </div>
         </div>
         <div class="content-list">
             <div class="content__title">

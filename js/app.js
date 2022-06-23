@@ -12,6 +12,7 @@ class App
     
     run(){
         this.$form.onImageChange();
+        this.$form.onDrag();
         this.$form.onSubmit();
         this.$form.ListenReset(this.$contactList);
         this.$contactList.updateContactList();
