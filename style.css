@@ -52,11 +52,16 @@ nav h1{
 
 .content .content-form form .input{
     width: 100%;
+    height: 80px;
+    /* border: solid red; */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
-
+.content .content-form form .input .error{
+    color: red;
+    height: 10px;
+}
 .content .content-form form .input_select{
     width: 100%;
     display: flex;

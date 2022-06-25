@@ -7,11 +7,16 @@ import ContactList from "./ContactList.js";
 class Form
 {
     _inptPrenom;
+    _inptPrenomErElt;
     _inptNom;
+    _inptNomErElt;
     _inptTel;
+    _inptTelErElt;
     _inptGroupe;
     _inptBio;
+    _inptBioErlt;
     _inptMail;
+    _inptMailErElt;
     _formPreviewImg;
     _inptFile;
     _index;
@@ -28,14 +33,20 @@ class Form
         this._inptFile = document.querySelector('.dropzone');
         this._dropzoneText = document.querySelector('#drop_zone_text');
         this._inptBio = document.querySelector('[name="bio"]');
+        this._inptBioErlt = document.querySelector('#error_bio');
         this._inptNom = document.querySelector('[name="nom"]');
+        this._inptNomErElt = document.querySelector('#error_nom');
         this._inptTel = document.querySelector('[name="tel"]');
+        this._inptTelErElt = document.querySelector('#error_tel');
         this._inptGroupe = document.querySelector('[name="groupe"]');
         this._inptPrenom = document.querySelector('[name="prenom"]');
+        this._inptPrenomErElt = document.querySelector('#error_prenom');
         this._inptMail = document.querySelector('[name="mail"]');
+        this._inptMailErElt = document.querySelector('#error_mail');
         this._formPreviewImg = document.querySelector('.form-img');
         this._index = document.querySelector('[name="index"]').value;
         this.$form_user_data = {};
+        // singleton
         if (Form.exist) {
             return Form.instance
         }
@@ -98,11 +109,14 @@ class Form
             this.$form_user_data.groupe = e.target.groupe.value;
             this.$form_user_data.bio = e.target.bio.value;
 
-            let user = new Contact(this.$form_user_data);
-            user.save();
-            this.clear();
-            this._dropzoneText.innerHTML = 'Faites glisser une image.';
-            this._formPreviewImg.style.backgroundColor='white'
+            let isInputEmpty = this.isEmpty(e.target.prenom,e.target.nom,e.target.tel,e.target.mail,e.target.bio);
+            if (isInputEmpty===false) {
+                let user = new Contact(this.$form_user_data);
+                user.save();
+                this.clear();
+                this._dropzoneText.innerHTML = 'Faites glisser une image.';
+                this._formPreviewImg.style.backgroundColor='white'
+            }
         })
     }
     /**
@@ -142,7 +156,48 @@ class Form
         this._inptFile.value=""
         this._inptMail.value = ""
         this._inptTel.value=""
+        this._inptNomErElt.innerHTML = '';
+        this._inptPrenomErElt = '';
+        this._inptTelErElt.innerHTML = '';
+        this._inptMailErElt.innerHTML = '';
+        this._inptBioErlt.innerHTML = '';
         this._formPreviewImg.style.removeProperty('background-image');
+    }
+
+   /**
+    * 
+    * @param {HTMLInputElement} inptPNom 
+    * @param {HTMLInputElement} inptNom 
+    * @param {HTMLInputElement} inptTel 
+    * @param {HTMLInputElement} inptMail 
+    * @param {HTMLInputElement} InptBio
+    * @return {boolean}
+    */
+    isEmpty(inptPNom,inptNom,inptTel,inptMail,InptBio){
+       let flag = false;
+       let text = 'ce champs est obligatoire';
+
+       if (inptNom.value==='') {
+            flag = true
+            this._inptNomErElt.innerHTML = text;
+       }
+       if (inptPNom.value==='') {
+            flag = true
+            this._inptPrenomErElt = text;
+       }
+       if (inptTel.value==='') {
+            flag = true
+            this._inptTelErElt.innerHTML = text;
+       }
+       if (inptMail.value==='') {
+            flag = true
+            this._inptMailErElt.innerHTML = text;
+       }
+       if (InptBio.value==='') {
+            flag = true
+            this._inptBioErlt.innerHTML = text;
+       }
+       return flag;
     }
 }
 export default Form;
